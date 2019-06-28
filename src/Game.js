@@ -1,4 +1,6 @@
 
+const Coordinate = require('./Coordinate')
+
 class Game {
   constructor(setting, moves) {
     const {
@@ -9,24 +11,24 @@ class Game {
     } = setting
     this.grid = grid
     this.currentPos = startPosition
-    this.exitPos = this.flattenCoordinates(exitPosition)
+    this.exitPos = Coordinate.coordToString(exitPosition)
     this.mines = this.flattenCoordinates(minesPositions)
     this.moves = moves
     this.direction = 0
     this.messages = []
   }
-  transfromCoord(coord) {
-    return `${coord.x},${coord.y}`
-  }
+  // transfromCoord(coord) {
+  //   return `${coord.x},${coord.y}`
+  // }
   /**
    * transfrome coordinates in adn hashtable
    * @param {Array} coordinates - array of coordinates {x:2, y:23}
    * @returns {Object} with position as hash value e.g ['2,23']: 1
    */
   flattenCoordinates(coordinates) {
-    const hash = []
-    for (const i in coordinates) {
-      const value = this.transfromCoord(coordinates[i])
+    const hash = []   
+    for (const i in coordinates) {     
+      const value = Coordinate.coordToString(coordinates[i])
       hash[value] = 1
     }
     return hash
