@@ -19,7 +19,7 @@ class Game {
     return `${coord.x},${coord.y}`
   }
   /**
-   * `
+   * transfrome coordinates in adn hashtable
    * @param {Array} coordinates - array of coordinates {x:2, y:23}
    * @returns {Object} with position as hash value e.g ['2,23']: 1
    */

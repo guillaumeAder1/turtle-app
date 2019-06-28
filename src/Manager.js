@@ -24,7 +24,7 @@ class Manager {
     for(let i = 0 ; i < rounds; i ++) {
       const game = new Game(settings[i], moves[i])
       this.output.push(game.run())
-      console.warn(this.output[this.output.length -1])
+      console.log(this.output[this.output.length -1])
     }    
   }
   /**
