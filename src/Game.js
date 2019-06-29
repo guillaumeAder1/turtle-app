@@ -18,6 +18,7 @@ class Game {
     this.movesQueue = moves
     // this.direction = 0
     this.messages = []
+    console.log('-------------')
   }
   /**
    * transfrom coordinates in an Map
@@ -39,6 +40,8 @@ class Game {
 
     while (this.movesQueue.length) {
       const nextStep = this.movesQueue.shift()
+      // console.log(nextStep, ' x', this.currentPos.x, ' y', this.currentPos.y, this.currentPos.direction)
+
       this.getAction(nextStep)
       // out of bound
       if (this.isOutOfBound(this.currentPos, this.grid)) {
@@ -61,14 +64,12 @@ class Game {
   }
 
   isOutOfBound(position, grid) {
-    const xValid = position.x >= grid.x && position.x <= grid.x
-    const yValid = position.y >= grid.y && position.y <= grid.y
-    return xValid && yValid
+    const xValid = position.x > 0 && position.x <= grid.x
+    const yValid = position.y > 0 && position.y <= grid.y
+    return !xValid || !yValid
   }
 
   getAction(type) {
-
-    console.log(this.currentPos.asString(), this.currentPos.direction)
     return type === 'r' ? this.currentPos.rotate() : this.currentPos.move()
   }
 
