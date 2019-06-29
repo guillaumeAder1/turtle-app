@@ -13,6 +13,7 @@ class Manager {
   }
   /**
    * basic inputs validation and execute game
+   * @returns {Array} of N results or error if not valid
    */
   init() {
     if (!this.validateInputs(this.settings, this.moves)) {
