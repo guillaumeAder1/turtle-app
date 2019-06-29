@@ -7,7 +7,7 @@ class Manager {
    * @param {Array} settings Array of Settings Object
    * @param {Array} moves Array of Array moves
    */
-  constructor (settings, moves) {
+  constructor(settings, moves) {
     this.settingsList = settings
     this.movesList = moves
     this.output = []
@@ -19,13 +19,13 @@ class Manager {
    * @param {Array} settings 
    * @param {Array} moves 
    */
-  start (settings, moves) {
+  start(settings, moves) {
     const rounds = this.getMaxRounds(settings, moves)
-    for(let i = 0 ; i < rounds; i ++) {
+    for (let i = 0; i < rounds; i++) {
       const game = new Game(settings[i], moves[i])
       this.output.push(game.run())
-      console.log(this.output[this.output.length -1])
-    }    
+    }
+    return this.output
   }
   /**
    * Verify params are not empty
@@ -34,7 +34,7 @@ class Manager {
    * @param {Array} settings 
    * @param {Array} moves 
    */
-  getMaxRounds (settings, moves){
+  getMaxRounds(settings, moves) {
     const min = Math.min(settings.length, moves.length)
     if (min && min > 0) {
       return min

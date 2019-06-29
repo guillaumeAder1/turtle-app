@@ -9,6 +9,9 @@ describe('Manager Module', () => {
   it('should exist', () => {
     expect(this.manager).not.toBe(null)
     expect(this.manager).not.toBe(undefined)
+    expect(this.manager.start).not.toBe(undefined)
+    expect(this.manager.getMaxRounds).not.toBe(undefined)
+
   })
   it('should run the game', () => {
     expect(this.manager.settings).not.toBe(null)
