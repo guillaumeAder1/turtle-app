@@ -32,6 +32,9 @@
  *  - If the position brings out of the map, I will stop the game and return out of bound message, even if there is some moves left
  *  - if the tutle touches a mine, I will stop the game and return mine hit message
  *  - if the tutle passes on the exit point, I will stop the game even if there is still some moves left 
+ *  - the turtle need to make at least one move before it hits anything
+ *      if start position is == to exit pos...
+ *      if start psoition is on a mine...
  * 
  * Input handler
  *  - for dev and testabilty purpose, I will store moves/settings as an Array of moves/settings - so I can run multiples scenerio at once
@@ -55,7 +58,7 @@ const moves = require('./config/moves.json')
 const Manager = require('./src/Manager')
 
 const runGames = new Manager(settings, moves).init()
-runGames.output.forEach((result, index) => {
+runGames.forEach((result, index) => {
   console.warn(`result round ${index + 1}: ${result}`)
 });
 
