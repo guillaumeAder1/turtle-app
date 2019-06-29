@@ -6,7 +6,7 @@
   "scripts": {
     "test:dev": "jasmine-node --autotest spec",
     "test": "nodemon --exec jasmine",
-    "dev": "node index"
+    "dev": "node index.js"
   },
   "repository": {
     "type": "git",
