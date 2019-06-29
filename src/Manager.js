@@ -15,7 +15,7 @@ class Manager {
   }
   /**
    * Runs N rounds of the Game Instance
-   * After every round, we ouput theresults in the console
+   * After every round, we store the results in the output Array
    * @param {Array} settings 
    * @param {Array} moves 
    */

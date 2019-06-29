@@ -35,6 +35,7 @@
  * 
  * Input handler
  *  - for dev and testabilty purpose, I will store moves/settings as an Array of moves/settings - so I can run multiples scenerio at once
+ *  - I will assume the two files will have the same amount of entry
  *  - I will assume the inputs are valid format:
  *      - moves is array 0 < moves.length < 1000
  *      - moves[i] will be either 'r' or 'm' in lowercase
