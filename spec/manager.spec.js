@@ -17,8 +17,6 @@ describe('Manager Module', () => {
     it('should run the game', () => {
       expect(this.manager.settings).not.toBe(null)
       expect(this.manager.moves).not.toBe(null)
-      expect(typeof this.manager.output).toBe('object')
-      expect(this.manager.output.length).toBeGreaterThan(0)
     })
   })
   describe('check wrong settings', () => {

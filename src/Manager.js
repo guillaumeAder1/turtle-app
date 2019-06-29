@@ -10,15 +10,16 @@ class Manager {
   constructor(settings, moves) {
     this.settings = settings
     this.moves = moves
-    this.output = []
   }
+  /**
+   * basic inputs validation and execute game
+   */
   init() {
     if (!this.validateInputs(this.settings, this.moves)) {
-      this.output.push('error, input not valid')
+      return ['error, input not valid']
     } else {
-      this.output = this.exec(this.settings, this.moves)
+      return this.exec(this.settings, this.moves)
     }
-    return this.output
   }
   /**
    * Runs N rounds of the Game Instance
