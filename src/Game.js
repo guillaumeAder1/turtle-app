@@ -14,16 +14,16 @@ class Game {
     this.grid = grid
     this.currentPos = new Turtle(startPosition.x, startPosition.y, 0)
     this.exitPos = Coordinate.coordToString(exitPosition)
-    this.mines = this.flattenCoordinates(minesPositions)
+    this.mines = this.coordToMap(minesPositions)
     this.movesQueue = moves
     this.messages = []
   }
   /**
-   * transfrom coordinates in an Map
+   * transfrom coordinates in a Map
    * @param {Array} coordinates - array of coordinates {x:2, y:23}
    * @returns {Object} with position as hash value e.g ['2_23']: 1
    */
-  flattenCoordinates(coordinates) {
+  coordToMap(coordinates) {
     const map = []
     for (const i in coordinates) {
       const value = Coordinate.coordToString(coordinates[i])
@@ -36,7 +36,7 @@ class Game {
    * @param {Coordinate as String} coordToFind 
    * @param {Object} list key of coordinates
    */
-  findCoordinates(coordToFind, list) {
+  touchedMine(coordToFind, list) {
     return !!list[coordToFind]
   }
   run() {
@@ -49,7 +49,7 @@ class Game {
         break
       }
       // hit a mine
-      if (this.findCoordinates(this.currentPos.asString(), this.mines)) {
+      if (this.touchedMine(this.currentPos.asString(), this.mines)) {
         this.messages.push('hit a mine')
         break
       }

@@ -5,8 +5,6 @@ class Turtle extends Coordinates {
     super(x, y)
     this.direction = direction
   }
-  // get direction() { return this.direction }
-  // set direction(val) { this.direction = val }
 
   asString() {
     return Coordinates.coordToString(this)

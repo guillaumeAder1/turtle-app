@@ -7,7 +7,7 @@ describe('Game Module', () => {
     { x: 1, y: 3 },
     { x: 89, y: 12 }
   ]
-  const flat = game.flattenCoordinates(coord)
+  const flat = game.coordToMap(coord)
   it('should be defined as expected', () => {
     const {
       grid,
@@ -32,9 +32,9 @@ describe('Game Module', () => {
     expect(flat['89_12']).toEqual(1)
   })
   it('should find coordinate in list', () => {
-    expect(game.findCoordinates('1_3', flat)).toBe(true)
-    expect(game.findCoordinates('1_13', flat)).toBe(false)
-    expect(game.findCoordinates('89_12', flat)).toBe(true)
+    expect(game.touchedMine('1_3', flat)).toBe(true)
+    expect(game.touchedMine('1_13', flat)).toBe(false)
+    expect(game.touchedMine('89_12', flat)).toBe(true)
   })
   it('should check if coord is in grid', () => {
     const grid = { x: 5, y: 3 }
