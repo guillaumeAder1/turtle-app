@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "jasmine-node": "^3.0.0",
-    "jasmine-spec-reporter": "^4.2.1"
+    "jasmine-spec-reporter": "^4.2.1",
+    "nodemon": "^1.19.1"
   }
 }
