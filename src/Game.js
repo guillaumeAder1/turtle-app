@@ -16,9 +16,7 @@ class Game {
     this.exitPos = Coordinate.coordToString(exitPosition)
     this.mines = this.flattenCoordinates(minesPositions)
     this.movesQueue = moves
-    // this.direction = 0
     this.messages = []
-    console.log('-------------')
   }
   /**
    * transfrom coordinates in an Map
@@ -33,6 +31,11 @@ class Game {
     }
     return map
   }
+  /**
+   * check is coordToFind is in list
+   * @param {Coordinate as String} coordToFind 
+   * @param {Object} list key of coordinates
+   */
   findCoordinates(coordToFind, list) {
     return !!list[coordToFind]
   }
@@ -49,13 +52,12 @@ class Game {
         break
       }
       // hit a mine
-      // const currentPos = Coordinate.coordToString(this.currentPos)
       if (this.findCoordinates(this.currentPos.asString(), this.mines)) {
         this.messages.push('hit a mine')
         break
       }
       // exit found
-      if (this.findCoordinates(this.currentPos.asString(), this.exitPos)) {
+      if (this.currentPos.asString() === this.exitPos) {
         this.messages.push('exit found')
         break
       }
