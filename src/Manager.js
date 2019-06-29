@@ -8,8 +8,8 @@ class Manager {
    * @param {Array} moves Array of Array moves
    */
   constructor(settings, moves) {
-    this.settingsList = settings
-    this.movesList = moves
+    this.settings = settings
+    this.moves = moves
     this.output = []
     // this.init()
   }
@@ -33,8 +33,8 @@ class Manager {
     })
   }
   /**
-   * Verify params are not empty
-   * and valid with correct config object
+   * Verify params are not empty list of setting and move
+   * and should have the same lenggth
    * @param {Array} settings 
    * @param {Array} moves 
    * @returns Bool
@@ -43,11 +43,7 @@ class Manager {
     if (!settings || !moves) { return false }
     if (settings.length !== moves.length) { return false }
     if (settings.length === 0) { return false }
-    if (!settings.grid || !settings.startPosition || !settings.exitPosition || !settings.minesPositions) {
-      return false
-    }
     return true
-
   }
 }
 
