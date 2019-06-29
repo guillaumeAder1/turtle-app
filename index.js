@@ -55,7 +55,7 @@ const moves = require('./config/moves.json')
 const Manager = require('./src/Manager')
 
 const runGames = new Manager(settings, moves)
-runGames.forEach((result, index) => {
-  console.log(`result round ${index}: ${result}`)
+runGames.output.forEach((result, index) => {
+  console.warn(`result round ${index + 1}: ${result}`)
 });
 
