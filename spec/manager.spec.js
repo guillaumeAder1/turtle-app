@@ -9,14 +9,13 @@ describe('Manager Module', () => {
       this.manager.init()
     })
     it('should exist with methods defined', () => {
-      expect(this.manager).not.toBe(null)
-      expect(this.manager).not.toBe(undefined)
-      expect(this.manager.exec).not.toBe(undefined)
-      expect(this.manager.validateInputs).not.toBe(undefined)
+      expect(this.manager).toBeDefined()
+      expect(this.manager.exec).toBeDefined()
+      expect(this.manager.validateInputs).toBeDefined()
     })
     it('should have params input defined', () => {
-      expect(this.manager.settings).not.toBe(null)
-      expect(this.manager.moves).not.toBe(null)
+      expect(this.manager.settings).toBeDefined()
+      expect(this.manager.moves).toBeDefined()
       const {
         settings,
         moves
