@@ -47,8 +47,8 @@ class Game {
         break
       }
       // hit a mine
-      const currentPos = Coordinate.coordToString(this.currentPos)
-      if (this.findCoordinates(currentPos, this.mines)) {
+      // const currentPos = Coordinate.coordToString(this.currentPos)
+      if (this.findCoordinates(this.currentPos.asString(), this.mines)) {
         this.messages.push('hit a mine')
         break
       }
@@ -76,7 +76,7 @@ class Game {
   }
   move() {
     const nextPos = this.getNextPos(this.direction)
-    this.currentPos = this.setNewPos(nextPos, this.currentPos)
+    this.currentPos.setNewPos(nextPos)
   }
 
   setNewPos(newPos, oldPos) {
