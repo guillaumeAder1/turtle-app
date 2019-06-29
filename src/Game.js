@@ -72,8 +72,6 @@ class Game {
 
   rotate() {
     this.currentPos.rotate()
-    // this.direction += 90;
-    // if (this.direction === 360) { this.direction = 0 }
   }
   move() {
     // const nextPos = this.getNextPos(this.direction)
