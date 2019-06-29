@@ -39,8 +39,7 @@ class Game {
 
     while (this.movesQueue.length) {
       const nextStep = this.movesQueue.shift()
-      const action = this.getAction(nextStep)
-      action()
+      this.getAction(nextStep)
       // out of bound
       if (this.isOutOfBound(this.currentPos, this.grid)) {
         this.messages.push('is out of grid')
@@ -60,6 +59,7 @@ class Game {
     }
     return this.messages[0] || ['still in danger']
   }
+
   isOutOfBound(position, grid) {
     const xValid = position.x >= grid.x && position.x <= grid.x
     const yValid = position.y >= grid.y && position.y <= grid.y
@@ -67,38 +67,11 @@ class Game {
   }
 
   getAction(type) {
-    return type === 'r' ? this.rotate.bind(this) : this.move.bind(this);
+
+    console.log(this.currentPos.asString(), this.currentPos.direction)
+    return type === 'r' ? this.currentPos.rotate() : this.currentPos.move()
   }
 
-  rotate() {
-    this.currentPos.rotate()
-  }
-  move() {
-    // const nextPos = this.getNextPos(this.direction)
-    this.currentPos.move()
-  }
-
-  getNextPos(direction) {
-    let pos = { x: 0, y: 0 }
-    switch (direction) {
-      case 0:
-        pos.x = -1
-        break;
-      case 90:
-        pos.y = 1
-        break;
-      case 180:
-        pos.x = 1
-        break;
-      case 270:
-        pos.y = -1
-        break;
-
-      default:
-        break;
-    }
-    return pos
-  }
 }
 
 module.exports = Game 

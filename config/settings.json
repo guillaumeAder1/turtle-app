@@ -1,29 +1,45 @@
 [
   {
     "grid": {
-      "x": 5,
-      "y": 4
+      "x": 3,
+      "y": 3
     },
     "startPosition": {
-      "x": 1,
+      "x": 2,
       "y": 2
     },
     "exitPosition": {
-      "x": 3,
-      "y": 4
+      "x": 1,
+      "y": 1
     },
     "minesPositions": [
       {
-        "x": 0,
+        "x": 1,
         "y": 2
       },
       {
-        "x": 3,
+        "x": 1,
         "y": 3
-      },
+      }
+    ]
+  },
+  {
+    "grid": {
+      "x": 3,
+      "y": 2
+    },
+    "startPosition": {
+      "x": 1,
+      "y": 1
+    },
+    "exitPosition": {
+      "x": 1,
+      "y": 2
+    },
+    "minesPositions": [
       {
-        "x": 5,
-        "y": 4
+        "x": 2,
+        "y": 2
       }
     ]
   }
