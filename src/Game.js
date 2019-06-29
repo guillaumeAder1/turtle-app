@@ -12,11 +12,11 @@ class Game {
       minesPositions
     } = setting
     this.grid = grid
-    this.currentPos = new Turtle(startPosition.x, startPosition.y)
+    this.currentPos = new Turtle(startPosition.x, startPosition.y, 0)
     this.exitPos = Coordinate.coordToString(exitPosition)
     this.mines = this.flattenCoordinates(minesPositions)
     this.movesQueue = moves
-    this.direction = 0
+    // this.direction = 0
     this.messages = []
   }
   /**
@@ -71,12 +71,13 @@ class Game {
   }
 
   rotate() {
-    this.direction += 90;
-    if (this.direction === 360) { this.direction = 0 }
+    this.currentPos.rotate()
+    // this.direction += 90;
+    // if (this.direction === 360) { this.direction = 0 }
   }
   move() {
-    const nextPos = this.getNextPos(this.direction)
-    this.currentPos.setNewPos(nextPos)
+    // const nextPos = this.getNextPos(this.direction)
+    this.currentPos.move()
   }
 
   getNextPos(direction) {
