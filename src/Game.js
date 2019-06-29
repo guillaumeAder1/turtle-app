@@ -53,7 +53,7 @@ class Game {
         break
       }
       // exit found
-      if (this.findCoordinates(flatCurrentPos, this.exitPos)) {
+      if (this.findCoordinates(this.currentPos.asString(), this.exitPos)) {
         this.messages.push('exit found')
         break
       }
@@ -79,12 +79,6 @@ class Game {
     this.currentPos.setNewPos(nextPos)
   }
 
-  setNewPos(newPos, oldPos) {
-    return {
-      x: oldPos.x + newPos.x,
-      y: oldPos.y + newPos.y
-    }
-  }
   getNextPos(direction) {
     let pos = { x: 0, y: 0 }
     switch (direction) {
