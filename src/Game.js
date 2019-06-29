@@ -1,5 +1,6 @@
 
 const Coordinate = require('./Coordinate')
+const Turtle = require('./Turtle')
 
 class Game {
 
@@ -11,59 +12,53 @@ class Game {
       minesPositions
     } = setting
     this.grid = grid
-    this.currentPos = startPosition
+    this.currentPos = new Turtle(startPosition.x, startPosition.y)
     this.exitPos = Coordinate.coordToString(exitPosition)
     this.mines = this.flattenCoordinates(minesPositions)
-    this.moves = moves
+    this.movesQueue = moves
     this.direction = 0
     this.messages = []
   }
-  // transfromCoord(coord) {
-  //   return `${coord.x},${coord.y}`
-  // }
   /**
-   * transfrome coordinates in adn hashtable
+   * transfrom coordinates in an Map
    * @param {Array} coordinates - array of coordinates {x:2, y:23}
-   * @returns {Object} with position as hash value e.g ['2,23']: 1
+   * @returns {Object} with position as hash value e.g ['2_23']: 1
    */
   flattenCoordinates(coordinates) {
-    const hash = []
+    const map = []
     for (const i in coordinates) {
       const value = Coordinate.coordToString(coordinates[i])
-      hash[value] = 1
+      map[value] = 1
     }
-    return hash
+    return map
   }
   findCoordinates(coordToFind, list) {
     return !!list[coordToFind]
   }
   run() {
-    while (this.moves.length) {
-      const nextStep = this.moves.shift()
+
+    while (this.movesQueue.length) {
+      const nextStep = this.movesQueue.shift()
       const action = this.getAction(nextStep)
       action()
-      const isOutOfBound = this.isOutOfBound(this.currentPos, this.grid)
-      if (isOutOfBound) {
-        this.messages.push('is out of boundary box')
+      // out of bound
+      if (this.isOutOfBound(this.currentPos, this.grid)) {
+        this.messages.push('is out of grid')
         break
       }
-      const flatCurrentPos = this.flattenCoordinates(this.currentPos)
-      const hitMine = this.findCoordinates(flatCurrentPos, this.mines)
-      if (hitMine) {
+      // hit a mine
+      const currentPos = Coordinate.coordToString(this.currentPos)
+      if (this.findCoordinates(currentPos, this.mines)) {
         this.messages.push('hit a mine')
         break
       }
-      if (!this.moves.length) {
-        const exitFound = this.findCoordinates(flatCurrentPos, this.exitPos)
-        if (exitFound) {
-          this.messages.push('exit found')
-        } else {
-          this.messages.push('still in danger')
-        }
+      // exit found
+      if (this.findCoordinates(flatCurrentPos, this.exitPos)) {
+        this.messages.push('exit found')
         break
       }
     }
-    return this.messages[0]
+    return this.messages[0] || ['still in danger']
   }
   isOutOfBound(position, grid) {
     const xValid = position.x >= grid.x && position.x <= grid.x
