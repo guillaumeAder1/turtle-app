@@ -2,15 +2,14 @@
 
 class Coordindate {
 
-  constructor( x, y ){
+  constructor(x, y) {
     this.x = x
     this.y = y
-    this.delimiter = '_'    
   }
-  static coordToString ({x,y}) {     
-    return `${x}${delimiter}${y}`
+  static coordToString({ x, y }) {
+    return `${x}_${y}`
   }
-  
+
 }
 
 module.exports = Coordindate  

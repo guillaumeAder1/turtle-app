@@ -2,6 +2,7 @@
 const Coordinate = require('./Coordinate')
 
 class Game {
+
   constructor(setting, moves) {
     const {
       grid,
@@ -26,8 +27,8 @@ class Game {
    * @returns {Object} with position as hash value e.g ['2,23']: 1
    */
   flattenCoordinates(coordinates) {
-    const hash = []   
-    for (const i in coordinates) {     
+    const hash = []
+    for (const i in coordinates) {
       const value = Coordinate.coordToString(coordinates[i])
       hash[value] = 1
     }
