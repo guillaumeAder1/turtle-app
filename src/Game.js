@@ -40,11 +40,9 @@ class Game {
     return !!list[coordToFind]
   }
   run() {
-
     while (this.movesQueue.length) {
       const nextStep = this.movesQueue.shift()
       // console.log(nextStep, ' x', this.currentPos.x, ' y', this.currentPos.y, this.currentPos.direction)
-
       this.getAction(nextStep)
       // out of bound
       if (this.isOutOfBound(this.currentPos, this.grid)) {
