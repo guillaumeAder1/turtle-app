@@ -17,6 +17,12 @@ describe('Manager Module', () => {
     it('should have params input defined', () => {
       expect(this.manager.settings).not.toBe(null)
       expect(this.manager.moves).not.toBe(null)
+      const {
+        settings,
+        moves
+      } = this.manager
+      expect(this.manager.validateInputs(settings, moves)).toBe(true)
+
     })
   })
   describe('check wrong settings', () => {

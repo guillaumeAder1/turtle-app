@@ -1,0 +1,35 @@
+const Turle = require('../src/Turtle')
+
+describe('Turtle Module', () => {
+  beforeEach(() => {
+    this.turtle = new Turle(1, 2, 0)
+  })
+  it('should be defined as expected', () => {
+    expect(this.turtle).not.toBe(null)
+    expect(this.turtle.direction).toEqual(0)
+    expect(this.turtle.x).toEqual(1)
+    expect(this.turtle.y).toEqual(2)
+    expect(this.turtle.asString()).toEqual('1_2')
+  })
+  it('should update direction as expected', () => {
+    this.turtle.rotate()
+    expect(this.turtle.direction).toEqual(90)
+    this.turtle.rotate()
+    expect(this.turtle.direction).toEqual(180)
+    this.turtle.rotate()
+    expect(this.turtle.direction).toEqual(270)
+    this.turtle.rotate()
+    expect(this.turtle.direction).toEqual(0)
+    this.turtle.rotate()
+    expect(this.turtle.direction).toEqual(90)
+  })
+  it('should update position as expected', () => {
+    const turt = new Turle(1, 2, 0)
+    turt.move()
+    expect(turt.y).toEqual(1)
+    turt.rotate()
+    turt.move()
+    expect(turt.x).toEqual(2)
+    expect(turt.y).toEqual(1)
+  })
+})
