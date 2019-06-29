@@ -14,7 +14,7 @@ describe('Manager Module', () => {
       expect(this.manager.exec).not.toBe(undefined)
       expect(this.manager.validateInputs).not.toBe(undefined)
     })
-    it('should run the game', () => {
+    it('should have params input defined', () => {
       expect(this.manager.settings).not.toBe(null)
       expect(this.manager.moves).not.toBe(null)
     })
