@@ -45,7 +45,6 @@ class Game {
       const nextStep = this.movesQueue.shift()
       this.getAction(nextStep)
       // out of bound
-      //if (this.isOutOfBound(this.currentPos, this.grid)) {
       if (this.grid.isOutOfBound(this.currentPos)) {
         this.messages.push('is out of grid')
         break
@@ -63,7 +62,6 @@ class Game {
     }
     return this.messages[0] || ['still in danger']
   }
-
 
   getAction(type) {
     return type === 'r' ? this.currentPos.rotate() : this.currentPos.move()
