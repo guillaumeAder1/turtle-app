@@ -29,4 +29,10 @@ describe('Mines Module', () => {
     expect(mines.list['89_12']).not.toBeDefined()
   })
 
+  it('should be empty object params is empty', () => {
+    const mines = new Mines()
+    expect(mines.list.length).toEqual(0)
+    expect(mines.touchedMine('1_1')).toEqual(false)
+  })
+
 })
