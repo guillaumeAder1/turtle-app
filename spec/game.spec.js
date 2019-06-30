@@ -20,7 +20,9 @@ describe('Game Module', () => {
     expect(movesQueue).toBeDefined()
     expect(mines).toBeDefined()
     expect(game.run).toBeDefined()
+    expect(typeof game.run).toBe('function')
     expect(game.getAction).toBeDefined()
+    expect(typeof game.getAction).toBe('function')
   })
 
 })
