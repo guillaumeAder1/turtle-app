@@ -30,18 +30,18 @@ of bounds.
 
 ### Notes
 I will assume the following rules:
-- If the moves brings the tutle out of the map, I will stop the game and return out of bound message, even if there is some moves left in the queue
-- if the tutle touches a mine, I will stop the game and return mine hit message even if there is some moves left in the queue
-- if the tutle passes on the exit point, I will stop the game even if there is some moves left in the queue
- - the turtle need to make at least one move before any rule apply
+- If the moves brings the tutle out of the map, I will stop the game and return 'out of bound' message, even if there is some moves left in the queue
+- if the tutle touches a mine, I will stop the game and return 'mine hit' message even if there is some moves left in the queue
+- if the tutle passes on the exit point, I will stop the game and return the 'exit found' message, even if there is some moves left in the queue
+- the turtle need to make at least one move before any rule apply
  
- for example if the start position is the same as exit position, or
+for example if the start position is the same as exit position, or
 if start position is on a mine it will not take effect at this time.
 
 ### please note:
 - for dev and testabilty purpose, I will store moves/settings as an Array of moves/settings - so I can run multiples scenerio at once
-- I will assume the two files will have the same amount of entries, so for each setting there is a move corresponding
-- I will assume the inputs are valid format:
+- I will assume the two files will have the same amount of entries, so for each setting there is an array of moves corresponding
+- I will assume all the inputs are valid format:
     - moves is an array with  ` 1 < moves.length < 1000`
     - `moves[i]` will be either `'r'` or `'m' ` in lowercase 
     - Grid { height, width } = positive integer, 1 < height, width < 1000
@@ -50,5 +50,5 @@ if start position is on a mine it will not take effect at this time.
     - exit position define as `{x,y}` coordinates
     - exit postition will always be valid coordinates (within the grid dimension)
     - mines will be a list of `{x,y}` coordinates and all within the grid dimension
-    - all `{x, y}` coordinates will always be positive integer and `1 < x,y < 1000`
+    - all `{x, y}` coordinates will always be positive integer and `0 < x,y < 1000`
 
