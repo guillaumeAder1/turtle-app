@@ -29,7 +29,7 @@ A message on the console describing the result, one of Success, Mine hit, still 
 of bounds.
 
 ### Notes
-I will assume the following rules:
+As I could not be sure of the expected behaviour in certains cases, I will assume the following rules:
 - If the moves brings the tutle out of the map, I will stop the game and return 'out of bound' message, even if there is some moves left in the queue
 - if the tutle touches a mine, I will stop the game and return 'mine hit' message even if there is some moves left in the queue
 - if the tutle passes on the exit point, I will stop the game and return the 'exit found' message, even if there is some moves left in the queue
