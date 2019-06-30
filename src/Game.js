@@ -2,6 +2,7 @@
 const Coordinate = require('./Coordinate')
 const Turtle = require('./Turtle')
 const Grid = require('./Grid')
+const Mines = require('./Mines')
 
 class Game {
 
@@ -15,30 +16,9 @@ class Game {
     this.grid = new Grid(grid.x, grid.y)
     this.currentPos = new Turtle(startPosition.x, startPosition.y, 0)
     this.exitPos = Coordinate.coordToString(exitPosition)
-    this.mines = this.coordToMap(minesPositions)
+    this.mines = new Mines(minesPositions)
     this.movesQueue = moves
     this.messages = []
-  }
-  /**
-   * transfrom coordinates in a Map
-   * @param {Array} coordinates - array of coordinates {x:2, y:23}
-   * @returns {Object} with position as hash value e.g ['2_23']: 1
-   */
-  coordToMap(coordinates) {
-    const map = []
-    for (const i in coordinates) {
-      const value = Coordinate.coordToString(coordinates[i])
-      map[value] = 1
-    }
-    return map
-  }
-  /**
-   * check is coordToFind is in list
-   * @param {Coordinate as String} coordToFind 
-   * @param {Object} list key of coordinates
-   */
-  touchedMine(coordToFind, list) {
-    return !!list[coordToFind]
   }
   run() {
     while (this.movesQueue.length) {
@@ -50,7 +30,7 @@ class Game {
         break
       }
       // hit a mine
-      if (this.touchedMine(this.currentPos.asString(), this.mines)) {
+      if (this.mines.touchedMine(this.currentPos.asString())) {
         this.messages.push('hit a mine')
         break
       }
