@@ -17,33 +17,38 @@ class Game {
       exitPosition,
       minesPositions
     } = setting
-    this.grid = new Grid(grid.x, grid.y)
-    this.currentPos = new Turtle(startPosition.x, startPosition.y, 0)
-    this.exitPos = Coordinate.coordToString(exitPosition)
+
+    this.grid = grid.x && grid.y ? new Grid(grid.x, grid.y) : new Grid(5, 5)
+    this.currentPos = startPosition.x && startPosition.y ? new Turtle(startPosition.x, startPosition.y) : new Turtle(0, 0)
+    this.exitPos = Coordinate.coordToString(exitPosition) || '1_1'
     this.mines = new Mines(minesPositions)
-    this.movesQueue = moves // input moves
+    this.movesQueue = moves || [] // input moves
     this.messages = [] // output results
   }
   run() {
     while (this.movesQueue.length) {
-      // get current move off the queue
-      const nextStep = this.movesQueue.shift()
-      // update the turtle state
-      this.getAction(nextStep)
-      // out of bound
-      if (this.grid.isOutOfBound(this.currentPos)) {
-        this.messages.push('is out of grid')
-        break
-      }
-      // hit a mine
-      if (this.mines.touchedMine(this.currentPos.asString())) {
-        this.messages.push('hit a mine')
-        break
-      }
-      // exit found
-      if (this.currentPos.asString() === this.exitPos) {
-        this.messages.push('exit found')
-        break
+      try {
+        // get current move off the queue
+        const nextStep = this.movesQueue.shift()
+        // update the turtle state
+        this.getAction(nextStep)
+        // out of bound
+        if (this.grid.isOutOfBound(this.currentPos)) {
+          this.messages.push('is out of grid')
+          break
+        }
+        // hit a mine
+        if (this.mines.touchedMine(this.currentPos.asString())) {
+          this.messages.push('hit a mine')
+          break
+        }
+        // exit found
+        if (this.currentPos.asString() === this.exitPos) {
+          this.messages.push('exit found')
+          break
+        }
+      } catch (error) {
+        this.messages.push('Error, something went wrong: ' + error.message)
       }
     }
     return this.messages[0] || ['still in danger']
