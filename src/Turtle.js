@@ -4,7 +4,7 @@ const Coordinates = require('./Coordinate')
  * and it current state
  */
 class Turtle extends Coordinates {
-  constructor(x, y, direction) {
+  constructor(x, y, direction = 0) {
     super(x, y)
     this.direction = direction
   }
