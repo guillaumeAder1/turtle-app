@@ -1,15 +1,18 @@
 const Coordinates = require('./Coordinate')
-
+/**
+ * Represente the turtle postion
+ * and it current state
+ */
 class Turtle extends Coordinates {
   constructor(x, y, direction) {
     super(x, y)
     this.direction = direction
   }
-
+  // transform position as a string {x:3, y:7} => '3_7' 
   asString() {
     return Coordinates.coordToString(this)
   }
-
+  // update state x or y
   move() {
     switch (this.direction) {
       case 0:
@@ -28,7 +31,7 @@ class Turtle extends Coordinates {
         break;
     }
   }
-
+  // update direction
   rotate() {
     switch (this.direction) {
       case 0:

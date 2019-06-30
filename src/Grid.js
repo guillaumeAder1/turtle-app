@@ -1,3 +1,6 @@
+/**
+ * Game boundary box
+ */
 class Grid {
 
   constructor(width, height) {
