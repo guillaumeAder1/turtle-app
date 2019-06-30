@@ -26,7 +26,9 @@ class Game {
   }
   run() {
     while (this.movesQueue.length) {
+      // get current move off the queue
       const nextStep = this.movesQueue.shift()
+      // update the turtle state
       this.getAction(nextStep)
       // out of bound
       if (this.grid.isOutOfBound(this.currentPos)) {
