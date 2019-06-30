@@ -44,7 +44,7 @@ if start position is on a mine it will not take effect at this time.
 - I will assume all the inputs are valid format:
     - moves is an array with  ` 1 < moves.length < 1000`
     - `moves[i]` will be either `'r'` or `'m' ` in lowercase 
-    - Grid { height, width } = positive integer, 1 < height, width < 1000
+    - Grid { height, width } = positive integer, `1 < height, width < 1000`
     - start position define as `{x,y}` coordinates
     - start postition will always be valid coordinates (within the grid dimension)
     - exit position define as `{x,y}` coordinates
