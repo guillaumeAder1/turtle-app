@@ -7,14 +7,14 @@ describe('Game Module', () => {
   it('should be defined as expected', () => {
     const {
       grid,
-      currentPos,
+      turtlePos,
       exitPos,
       messages,
       movesQueue,
       mines
     } = game
     expect(grid).toBeDefined()
-    expect(currentPos).toBeDefined()
+    expect(turtlePos).toBeDefined()
     expect(exitPos).toBeDefined()
     expect(messages).toBeDefined()
     expect(movesQueue).toBeDefined()

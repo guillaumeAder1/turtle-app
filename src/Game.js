@@ -19,7 +19,7 @@ class Game {
     } = setting
 
     this.grid = grid.x && grid.y ? new Grid(grid.x, grid.y) : new Grid(5, 5)
-    this.currentPos = startPosition.x && startPosition.y ? new Turtle(startPosition.x, startPosition.y) : new Turtle(0, 0)
+    this.turtlePos = startPosition.x && startPosition.y ? new Turtle(startPosition.x, startPosition.y) : new Turtle(0, 0)
     this.exitPos = Coordinate.coordToString(exitPosition) || '1_1'
     this.mines = new Mines(minesPositions)
     this.movesQueue = moves || [] // input moves
@@ -33,17 +33,17 @@ class Game {
         // update the turtle state
         this.getAction(nextStep)
         // out of bound
-        if (this.grid.isOutOfBound(this.currentPos)) {
+        if (this.grid.isOutOfBound(this.turtlePos)) {
           this.messages.push('is out of grid')
           break
         }
         // hit a mine
-        if (this.mines.touchedMine(this.currentPos.asString())) {
+        if (this.mines.touchedMine(this.turtlePos.asString())) {
           this.messages.push('hit a mine')
           break
         }
         // exit found
-        if (this.currentPos.asString() === this.exitPos) {
+        if (this.turtlePos.asString() === this.exitPos) {
           this.messages.push('exit found')
           break
         }
@@ -55,7 +55,7 @@ class Game {
   }
   // update turtle pos accordingly
   getAction(type) {
-    return type === 'r' ? this.currentPos.rotate() : this.currentPos.move()
+    return type === 'r' ? this.turtlePos.rotate() : this.turtlePos.move()
   }
 
 }
