@@ -1,6 +1,7 @@
 
 const Coordinate = require('./Coordinate')
 const Turtle = require('./Turtle')
+const Grid = require('./Grid')
 
 class Game {
 
@@ -11,7 +12,7 @@ class Game {
       exitPosition,
       minesPositions
     } = setting
-    this.grid = grid
+    this.grid = new Grid(grid.x, grid.y)
     this.currentPos = new Turtle(startPosition.x, startPosition.y, 0)
     this.exitPos = Coordinate.coordToString(exitPosition)
     this.mines = this.coordToMap(minesPositions)
@@ -44,7 +45,8 @@ class Game {
       const nextStep = this.movesQueue.shift()
       this.getAction(nextStep)
       // out of bound
-      if (this.isOutOfBound(this.currentPos, this.grid)) {
+      //if (this.isOutOfBound(this.currentPos, this.grid)) {
+      if (this.grid.isOutOfBound(this.currentPos)) {
         this.messages.push('is out of grid')
         break
       }
@@ -62,11 +64,6 @@ class Game {
     return this.messages[0] || ['still in danger']
   }
 
-  isOutOfBound(position, grid) {
-    const xValid = position.x > 0 && position.x <= grid.x
-    const yValid = position.y > 0 && position.y <= grid.y
-    return !xValid || !yValid
-  }
 
   getAction(type) {
     return type === 'r' ? this.currentPos.rotate() : this.currentPos.move()

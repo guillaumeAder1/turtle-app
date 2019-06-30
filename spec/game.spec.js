@@ -36,11 +36,4 @@ describe('Game Module', () => {
     expect(game.touchedMine('1_13', flat)).toBe(false)
     expect(game.touchedMine('89_12', flat)).toBe(true)
   })
-  it('should check if coord is in grid', () => {
-    const grid = { x: 5, y: 3 }
-    const coord1 = { x: 2, y: 2 }
-    const coord2 = { x: 20, y: 2 }
-    expect(game.isOutOfBound(coord1, grid)).toBe(false)
-    expect(game.isOutOfBound(coord2, grid)).toBe(true)
-  })
 })
