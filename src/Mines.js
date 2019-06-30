@@ -5,9 +5,9 @@ class Mines {
   }
 
   /**
-   * transfrom coordinates in a Map
+   * transfrom coordinates in a Map 'key': val
    * @param {Array} coordinates - array of coordinates {x:2, y:23}
-   * @returns {Object} with position as hash value e.g ['2_23']: 1
+   * @returns {Object} with position as key value e.g ['2_23']: 1
    */
   coordToMap(coordinates) {
     const map = []

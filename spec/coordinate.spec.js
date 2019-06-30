@@ -11,7 +11,7 @@ describe('Coordinate module', () => {
     expect(coord.x).toBe(3)
     expect(coord.y).toBe(2)
   })
-  it('should return coordinates as a string', () => {
+  it('should return valid coordinates as a string', () => {
     const coord = Coordinate.coordToString({ x: 4, y: 5 })
     expect(coord).toBe('4_5')
   })

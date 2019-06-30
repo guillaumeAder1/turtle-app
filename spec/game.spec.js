@@ -1,12 +1,9 @@
 const Game = require('../src/Game')
 const moves = require('../config/moves')
 const settings = require('../config/settings')
+const game = new Game(settings[0], moves[0])
+
 describe('Game Module', () => {
-  const game = new Game(settings[0], moves[0])
-  const coord = [
-    { x: 1, y: 3 },
-    { x: 89, y: 12 }
-  ]
   it('should be defined as expected', () => {
     const {
       grid,
@@ -22,6 +19,8 @@ describe('Game Module', () => {
     expect(messages).toBeDefined()
     expect(movesQueue).toBeDefined()
     expect(mines).toBeDefined()
+    expect(game.run).toBeDefined()
+    expect(game.getAction).toBeDefined()
   })
 
 })
